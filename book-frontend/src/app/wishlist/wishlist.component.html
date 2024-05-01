@@ -1,0 +1,15 @@
+<div class="main-section">
+    <mat-card *ngFor="let book of books">
+        <mat-card-header>
+            <div mat-card-avatar [ngStyle]="{ 'background-image': 'url(' + book.avatar + ')' }"></div>
+            <mat-card-title routerLink="/book-detail/{{book.id}}">{{book.title}}</mat-card-title>
+            <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+
+            <div class="action-style">
+                <mat-icon [ngStyle]="{ 'color': (book.favorite) ? 'red' : 'lightgrey'}" class="favorite"
+                    (click)="removeFromFavorites(book.id)">favorite
+                </mat-icon>
+            </div>
+        </mat-card-header>
+    </mat-card>
+</div>

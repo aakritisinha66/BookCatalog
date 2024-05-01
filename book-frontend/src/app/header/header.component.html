@@ -1,17 +1,17 @@
 <div class="favourite">
-    <h2 class="title">Book Catalog</h2>
-    
+    <h2 class="title" routerLink="/home">Book Catalog</h2>
+
     <div class="icons-style">
         <button mat-button [matBadge]="favouriteBooks.length" class="recent">Recently added</button>
-    <mat-icon [matBadge]="" class="heart-style">favorite</mat-icon>
+        <mat-icon [matBadge]="" routerLink="/wishlist" class="heart-style">favorite</mat-icon>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-icon">
-        <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <!-- <button mat-menu-item>Wishlist</button> -->
-        <button mat-menu-item routerLink="/update-book">Add Books</button>
-        <button mat-menu-item routerLink="/">Profile</button>
-    </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-icon">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <!-- <button mat-menu-item>Wishlist</button> -->
+            <button mat-menu-item routerLink="/update-book">Add Books</button>
+            <button mat-menu-item routerLink="/">Profile</button>
+        </mat-menu>
     </div>
 </div>

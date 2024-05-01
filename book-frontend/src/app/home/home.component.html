@@ -40,7 +40,7 @@
                     <img mat-card-image class="image-style" [src]="book.img">
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-button (click)="selectBook(book.id)">Update</button>
+                    <button mat-button (click)="selectBook(book.id)" class="update">Update</button>
                     <mat-icon [ngStyle]="{ 'color': (book.favorite) ? 'red' : 'lightgrey'}" class="favorite"
                         (click)="book.favorite ? removeFromFavorites(book.id) : addToFavorites(book.id)">favorite
                     </mat-icon>

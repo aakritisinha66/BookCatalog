@@ -21,6 +21,7 @@ import { MaterialModule } from './material.module';
 import { EffectsModule } from '@ngrx/effects';
 import { favoriteReducer } from './store/reducer/favorite.reducer';
 import { FavoriteEffects } from './store/effects/favorite.efects';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FavoriteEffects } from './store/effects/favorite.efects';
     EditBookComponent,
     CapitalizePipe,
     HighlightDirective,
-    HeaderComponent
+    HeaderComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,6 @@ import { FavoriteEffects } from './store/effects/favorite.efects';
       books: bookReducer, // Register bookReducer
       favorite: favoriteReducer // Register favoriteReducer
     }), 
-    // StoreModule.forRoot({bookID: favoriteReducer}),
     EffectsModule.forRoot([BookEffects, FavoriteEffects]), // Registering the BookEffects
     BrowserAnimationsModule,
     MaterialModule

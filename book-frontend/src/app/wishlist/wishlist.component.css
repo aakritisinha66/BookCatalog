@@ -1,0 +1,27 @@
+mat-card {
+    display: inline-flex;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid rgba(210, 210, 210, 0.42);
+}
+
+.mat-mdc-card-avatar {
+    background-size: cover;
+}
+
+.action-style {
+    display: flex;
+    position: absolute;
+    right: 60px;
+}
+
+.favorite {
+    cursor: pointer;
+}
+
+.main-section {
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 10px;
+    display: grid;
+}

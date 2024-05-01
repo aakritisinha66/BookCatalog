@@ -20,7 +20,7 @@
       "img": "/assets/image/1984.jpg",
       "avatar": "/assets/image/GeorgeOrwell.jpg",
       "toggle": true,
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "3",
@@ -42,7 +42,7 @@
       "img": "/assets/image/The Diary of a Young Girl.jpg",
       "avatar": "/assets/image/AnaFrank.jpg",
       "toggle": false,
-      "favorite": true
+      "favorite": false
     }
   ]
 }
