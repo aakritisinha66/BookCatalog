@@ -30,13 +30,46 @@ mat-card {
 }
 
 .input-style {
+    /* height: 30px;
+    font-size: 15px; */
     height: 30px;
     font-size: 15px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border: 1px solid lightgrey !important;
+    border-color: black;
+    padding: 2px;
+    padding-left: 12px;
+    border-right: none !important;
 }
+
 .search-btn {
-    height: 35px;
+    height: 36.5px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border: 1px solid lightgrey !important;
+    background-color: transparent;
+    border-left: none !important;
 }
 
 .search-style {
     display: flex;
+}
+
+.favorite {
+    cursor: pointer;
+}
+
+.action-style {
+    display: flex;
+}
+
+.update {
+    margin-right: 140px;
+}
+
+.main-section {
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 10px;
 }

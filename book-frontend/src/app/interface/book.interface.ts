@@ -9,5 +9,6 @@ export interface Book {
     "img": string,
     "avatar": string,
     "toggle": boolean,
+    "favorite": boolean
 
 }

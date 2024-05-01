@@ -8,7 +8,8 @@
       "description": "A novel about justice and compassion in the Deep South.",
       "img": "/assets/image/To Kill A Mockingbird.jpg",
       "avatar": "/assets/image/HarperLee.jpg",
-      "toggle": true
+      "toggle": true,
+      "favorite": false
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
       "description": "A dystopian novel set in a totalitarian society.",
       "img": "/assets/image/1984.jpg",
       "avatar": "/assets/image/GeorgeOrwell.jpg",
-      "toggle": false
+      "toggle": true,
+      "favorite": true
     },
     {
       "id": "3",
@@ -28,7 +30,8 @@
       "description": "A romantic novel set in early 19th-century England.",
       "img": "/assets/image/Pride and Prejudice.jpg",
       "avatar": "/assets/image/JaneAusten.jpg",
-      "toggle": false
+      "toggle": true,
+      "favorite": true
     },
     {
       "id": "4",
@@ -38,7 +41,8 @@
       "description": "A deeply moving and unforgettable portrait of an ordinary and yet an extraordinary teenage girl.",
       "img": "/assets/image/The Diary of a Young Girl.jpg",
       "avatar": "/assets/image/AnaFrank.jpg",
-      "toggle": false
+      "toggle": false,
+      "favorite": true
     }
   ]
 }

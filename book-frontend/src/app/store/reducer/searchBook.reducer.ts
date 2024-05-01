@@ -26,7 +26,7 @@ export const bookReducer = createReducer(
   })),
   on(searchBooksSuccess, (state, { books }) => ({
     ...state,
-    books,
+    books,             //books from interface
     loading: false,
     error: null
   })),

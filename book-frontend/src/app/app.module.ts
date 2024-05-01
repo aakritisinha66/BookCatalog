@@ -19,6 +19,8 @@ import { BookEffects } from './store/effects/searchBooks.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { EffectsModule } from '@ngrx/effects';
+import { favoriteReducer } from './store/reducer/favorite.reducer';
+import { FavoriteEffects } from './store/effects/favorite.efects';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,12 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ books: bookReducer }), // Registering the bookReducer
-    EffectsModule.forRoot([BookEffects]), // Registering the BookEffects
+    StoreModule.forRoot({ 
+      books: bookReducer, // Register bookReducer
+      favorite: favoriteReducer // Register favoriteReducer
+    }), 
+    // StoreModule.forRoot({bookID: favoriteReducer}),
+    EffectsModule.forRoot([BookEffects, FavoriteEffects]), // Registering the BookEffects
     BrowserAnimationsModule,
     MaterialModule
   ],

@@ -1,5 +1,4 @@
-<div>
-    <app-header></app-header>
+<div class="main-section">
     <div class="actions">
         <!-- Search Input -->
         <div class="search-style">
@@ -8,9 +7,16 @@
                 <mat-icon aria-hidden="false" aria-label="search icon" fontIcon="search"></mat-icon>
             </button>
         </div>
-        <!-- Navigation to Add Book Webpage -->
-        <button class="add-button" routerLink="/update-book">Add Book</button>
     </div>
+
+    <!-- <ng-container *ngIf="(favoriteBooks | async) as favoriteBooks">
+            <div>{{favoriteBooks.length}}</div>
+            <div *ngFor="let book of favoriteBooks">
+                <span>{{book?.title}}</span>
+                <span>Favorite: {{book.favorite}}</span>
+            </div>
+        </ng-container> -->
+
     <!-- Error Message -->
     <div *ngIf="error | async as error" class="error">
         {{ error }}
@@ -22,7 +28,7 @@
     </div>
 
     <!-- List of Filtered Books -->
-    <ng-container *ngIf="(filteredBooks | async) as bookList">
+    <ng-container *ngIf="(filteredBooks$ | async) as bookList">
         <ng-container *ngIf="bookList.length > 0; else allBooks">
             <mat-card *ngFor="let book of bookList">
                 <mat-card-header>
@@ -35,7 +41,10 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-button (click)="selectBook(book.id)">Update</button>
-                    <mat-icon>favorite</mat-icon>
+                    <mat-icon [ngStyle]="{ 'color': (book.favorite) ? 'red' : 'lightgrey'}" class="favorite"
+                        (click)="book.favorite ? removeFromFavorites(book.id) : addToFavorites(book.id)">favorite
+                    </mat-icon>
+                    <mat-icon>delete</mat-icon>
                 </mat-card-actions>
             </mat-card>
         </ng-container>
@@ -52,13 +61,18 @@
                 <img mat-card-image class="image-style" [src]="book.img">
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button (click)="selectBook(book.id)">Update</button>
-                <mat-icon>favorite</mat-icon>
+                <button mat-button (click)="selectBook(book.id)" class="update">Update</button>
+                <div class="action-style">
+                    <mat-icon [ngStyle]="{ 'color': (book.favorite) ? 'red' : 'lightgrey'}" class="favorite"
+                        (click)="book.favorite ? removeFromFavorites(book.id) : addToFavorites(book.id)">favorite
+                    </mat-icon>
+                    <mat-icon>delete</mat-icon>
+                </div>
             </mat-card-actions>
         </mat-card>
     </ng-template>
 
-</div>
 
-<app-edit-book *ngIf="selectedBookID" [selectedBook]="selectedBookID" (signalChild)="getSignal($event)"
-    (successEvent)="showPopup()"></app-edit-book>
+    <app-edit-book *ngIf="selectedBookID" [selectedBook]="selectedBookID" (signalChild)="getSignal($event)"
+        (successEvent)="showPopup()"></app-edit-book>
+</div>
