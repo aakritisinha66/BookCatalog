@@ -1,0 +1,42 @@
+.books {
+    list-style: none;
+}
+
+.image-style {
+    object-fit: cover;
+    width: 250px;
+    height: 350px;
+}
+
+mat-card {
+    display: inline-flex;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid rgba(210, 210, 210, 0.42);
+}
+
+.mat-mdc-card-avatar {
+    background-size: cover;
+}
+
+.actions {
+    display: flex;
+    padding: 10px;
+    padding-left: 10px;
+}
+
+.add-button {
+    margin-left: 1000px;
+}
+
+.input-style {
+    height: 30px;
+    font-size: 15px;
+}
+.search-btn {
+    height: 35px;
+}
+
+.search-style {
+    display: flex;
+}

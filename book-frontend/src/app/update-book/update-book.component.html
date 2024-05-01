@@ -1,0 +1,44 @@
+<div>
+    <form [formGroup]="bookForm" (ngSubmit)="create()">
+        <div>
+            <label>Title: </label>
+            <input [formControl]="title" placeholder="Enter title name">
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="error">
+                <div *ngIf="title.errors?.['required']">
+                    <span>Title is required</span>
+                </div>
+                <div *ngIf="title.errors?.['specialChar']">
+                    <span>Title contains special characters</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Author: </label>
+            <input [formControl]="author" placeholder="Enter author name">
+            <div *ngIf="author.invalid && (author.dirty || author.touched)" class="error">
+                <div *ngIf="author.errors?.['required']">
+                    <span>Author name is required</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Genre: </label>
+            <input [formControl]="genre" placeholder="Enter genre name">
+            <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="error">
+                <div *ngIf="genre.errors?.['required']">
+                    <span>Genre is required</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Description: </label>
+            <textarea [formControl]="description" placeholder="Enter description"></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+                <div *ngIf="description.errors?.['required']">
+                    <span>Description is required</span>
+                </div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="bookForm.invalid">Add Book</button>
+    </form>
+</div>

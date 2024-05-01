@@ -1,0 +1,39 @@
+<!-- edit-book/:id' -->
+
+<div>
+    <form [formGroup]="bookForm" (ngSubmit)="update()">
+        <div>
+            <label>Title: </label>
+            <input [formControl]="title" placeholder="Enter title name" [value]="book.title" readonly>
+        </div>
+        <div>
+            <label>Author: </label>
+            <input [formControl]="author" placeholder="Enter author name" [value]="book.author">
+            <div *ngIf="author.invalid && (author.dirty || author.touched)" class="error">
+                <div *ngIf="author.errors?.['required']">
+                    <span>Author name is required</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Genre: </label>
+            <input [formControl]="genre" placeholder="Enter genre name" [value]="book.genre">
+            <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="error">
+                <div *ngIf="genre.errors?.['required']">
+                    <span>Genre is required</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Description: </label>
+            <textarea [formControl]="description" placeholder="Enter description" [value]="book.description"></textarea>
+            <!-- <span>{{book.description | capitalize}}</span> -->
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+                <div *ngIf="description.errors?.['required']">
+                    <span>Description is required</span>
+                </div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="bookForm.invalid">Update Book Details</button>
+    </form>
+</div>

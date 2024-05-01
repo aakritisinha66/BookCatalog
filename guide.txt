@@ -1,0 +1,2 @@
+To start backend mock server:-
+json-server --watch db.json

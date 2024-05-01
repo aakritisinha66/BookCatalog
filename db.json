@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Fiction",
+      "description": "A novel about justice and compassion in the Deep South.",
+      "img": "/assets/image/To Kill A Mockingbird.jpg",
+      "avatar": "/assets/image/HarperLee.jpg",
+      "toggle": true
+    },
+    {
+      "id": "2",
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Dystopian",
+      "description": "A dystopian novel set in a totalitarian society.",
+      "img": "/assets/image/1984.jpg",
+      "avatar": "/assets/image/GeorgeOrwell.jpg",
+      "toggle": false
+    },
+    {
+      "id": "3",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Romance",
+      "description": "A romantic novel set in early 19th-century England.",
+      "img": "/assets/image/Pride and Prejudice.jpg",
+      "avatar": "/assets/image/JaneAusten.jpg",
+      "toggle": false
+    },
+    {
+      "id": "4",
+      "title": "The Diary of a Young Girl",
+      "author": "Anne Frank",
+      "genre": "Autobiography",
+      "description": "A deeply moving and unforgettable portrait of an ordinary and yet an extraordinary teenage girl.",
+      "img": "/assets/image/The Diary of a Young Girl.jpg",
+      "avatar": "/assets/image/AnaFrank.jpg",
+      "toggle": false
+    }
+  ]
+}

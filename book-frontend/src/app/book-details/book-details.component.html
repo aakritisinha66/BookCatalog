@@ -1,0 +1,24 @@
+<div>
+    <ng-container *ngIf="book else loadingTemplate">
+        <div>
+            <label>Book Name: </label>
+            <span appHighlight>{{book.title}}</span>
+        </div>
+        <div>
+            <label>Author: </label>
+            <span>{{book.author}}</span>
+        </div>
+        <div>
+            <label>Genre: </label>
+            <span>{{book.genre}}</span>
+        </div>
+        <div>
+            <label>Description: </label>
+            <span>{{book.description}}</span>
+        </div>
+    </ng-container>
+    <ng-template #loadingTemplate>
+        <span>Loading...</span>
+    </ng-template>
+    <button (click)="goBackToHome()">Back</button>
+</div>
