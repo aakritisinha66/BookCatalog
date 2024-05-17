@@ -9,32 +9,40 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-book.component.css']
 })
 export class EditBookComponent {
-  constructor(public fb: FormBuilder, private bookService: BookServiceService, private route: ActivatedRoute){
+  constructor(public fb: FormBuilder, private bookService: BookServiceService, private route: ActivatedRoute) {
   }
 
   @Output() signalChild = new EventEmitter<string>();
   @Output() successEvent = new EventEmitter<void>();
   @Input() selectedBook: any;
-  
+
   book: any = {}
 
-  title= new FormControl('')
-  author= new FormControl('', [Validators.required])
-  genre= new FormControl('', [Validators.required])
-  description= new FormControl('', [Validators.required])
+  title = new FormControl('')
+  author = new FormControl('', [Validators.required])
+  genre = new FormControl('', [Validators.required])
+  description = new FormControl('', [Validators.required])
+  img = new FormControl('/assets/image/unavailable.jpg')
+  avatar = new FormControl('/assets/image/unavailable.jpg')
+  toggle = new FormControl(false)
+  favorite = new FormControl(false)
 
   bookForm: FormGroup = this.fb.group({
     title: this.title,
     author: this.author,
     genre: this.genre,
-    description: this.description
+    description: this.description,
+    img: this.img,
+    avatar: this.avatar,
+    toggle: this.toggle,
+    favorite: this.favorite
   })
 
   ngOnChanges() {
     console.log(this.selectedBook)
-    this.bookService.getBookById(this.selectedBook).subscribe((book: any)=>{
+    this.bookService.getBookById(this.selectedBook).subscribe((book: any) => {
       console.log("Book Details in child component: ", book)
-      this.book=book
+      this.book = book
       this.title.setValue(book.title)
       this.author.setValue(book.author)
       this.genre.setValue(book.genre)
@@ -42,10 +50,10 @@ export class EditBookComponent {
     })
   }
 
-  update(){
-    if(this.bookForm.valid){
+  update() {
+    if (this.bookForm.valid) {
       console.log("Form Values: ", this.bookForm.value)
-      this.bookService.updateBook(this.selectedBook, this.bookForm.value).subscribe(()=>{
+      this.bookService.updateBook(this.selectedBook, this.bookForm.value).subscribe(() => {
         console.log("PUT Request")
         this.signalChild.emit(this.bookForm.value.title)
         this.successEvent.emit()

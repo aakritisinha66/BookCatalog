@@ -1,6 +1,10 @@
-<div>
-    <form [formGroup]="bookForm" (ngSubmit)="create()">
-        <div>
+<div class="main-section">
+    <div class="form-title">
+        <span>Add a Book</span>
+    </div>
+    <mat-divider></mat-divider>
+    <form [formGroup]="bookForm" class="my-form" (ngSubmit)="create()">
+        <div class="fields">
             <label>Title: </label>
             <input [formControl]="title" placeholder="Enter title name">
             <div *ngIf="title.invalid && (title.dirty || title.touched)" class="error">
@@ -12,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="fields">
             <label>Author: </label>
             <input [formControl]="author" placeholder="Enter author name">
             <div *ngIf="author.invalid && (author.dirty || author.touched)" class="error">
@@ -21,16 +25,16 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="fields">
             <label>Genre: </label>
-            <input [formControl]="genre" placeholder="Enter genre name">
+            <input [formControl]="genre" placeholder="Enter genre">
             <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="error">
                 <div *ngIf="genre.errors?.['required']">
                     <span>Genre is required</span>
                 </div>
             </div>
         </div>
-        <div>
+        <div class="fields">
             <label>Description: </label>
             <textarea [formControl]="description" placeholder="Enter description"></textarea>
             <div *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
@@ -39,6 +43,8 @@
                 </div>
             </div>
         </div>
-        <button type="submit" [disabled]="bookForm.invalid">Add Book</button>
+        <div class="btn-style">
+            <button type="submit" [disabled]="bookForm.invalid">Add Book</button>
+        </div>
     </form>
 </div>

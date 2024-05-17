@@ -1,0 +1,64 @@
+.error {
+    color: red;
+}
+
+.form-title {
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgb(114, 130, 152);
+    color: white;
+}
+
+.main-section {
+    margin: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+    border: 1px solid lightgrey;
+    padding: 15px;
+}
+
+form {
+    padding-top: 15px;
+    background-color: rgba(210, 210, 210, 0.25);
+    padding-bottom: 20px;
+}
+
+.fields {
+    padding: 10px;
+    display: grid;
+}
+
+label {
+    font-weight: 500;
+}
+
+.fields input,
+.fields textarea {
+    padding: 10px !important;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 2px solid lightgrey;
+}
+
+.fields textarea {
+    height: 100px;
+}
+
+.btn-style {
+    text-align: center;
+}
+
+.btn-style button {
+    color: white;
+    background-color: rgba(34, 139, 34, 0.84);
+    padding: 8px;
+    font-size: 13px;
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+.btn-style button:disabled {
+    background-color: rgb(170, 170, 170);
+    cursor: not-allowed;
+}
