@@ -9,7 +9,7 @@
       "img": "/assets/image/To Kill A Mockingbird.jpg",
       "avatar": "/assets/image/HarperLee.jpg",
       "toggle": true,
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "2",
@@ -42,7 +42,29 @@
       "img": "/assets/image/The Diary of a Young Girl.jpg",
       "avatar": "/assets/image/AnaFrank.jpg",
       "toggle": false,
-      "favorite": false
+      "favorite": true
+    },
+    {
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-age Fiction",
+      "description": "A timeless coming-of-age novel that follows the disillusioned teenager Holden Caulfield as he navigates the challenges of adolescence and society.",
+      "img": "/assets/image/The Catcher in the Rye.jpg",
+      "avatar": "/assets/image/JDSalinger.jpg",
+      "toggle": true,
+      "favorite": false,
+      "id": "5"
+    },
+    {
+      "id": "6",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Literary Fiction",
+      "description": "An iconic novel set in the Jazz Age, exploring themes of wealth, love, and the American Dream through the enigmatic Jay Gatsby and narrator Nick Carraway.",
+      "img": "/assets/image/The Great Gatsby.jpg",
+      "avatar": "/assets/image/FScottFitzgerald.jpg",
+      "toggle": true,
+      "favorite": true
     }
   ]
 }

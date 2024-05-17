@@ -1,0 +1,164 @@
+Microservices
+
+Common : 
+GitHub->ConfigServer Repository->application.properties :
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost/schema_name
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+
+
+ConfigServer Project->application.properties :
+spring.application.name=ConfigServer
+server.port=1111
+spring.cloud.config.server.git.uri=https://infygithub.ad.infosys.com/aakriti-kumari/SIMconfig.git
+spring.cloud.config.server.git.username=Infosys user email ID
+spring.cloud.config.server.git.password=Personal access token
+spring.cloud.config.server.git.default-label=main
+spring.cloud.config.failFast=true
+eureka.client.service-url.defaultZone=http://localhost:5555/eureka
+eureka.client.fetch-registry=true
+eureka.client.register-with-eureka=true
+
+
+ConfigServer->Application class :
+@EnableConfigServer          (At Class level)
+
+
+Each Microservices->bootstrap.properties/bootstrap.yml :
+spring.config.import=optional:configserver:http://localhost:1111
+or spring.cloud.config.uri=http://localhost:1111
+spring.datasource.username=root
+spring.datasource.password=root
+
+
+Create multiple instances for load balancing :
+Boot Dashboard->Click on MS->Duplicate config->Edit  config of both instances(server.port=)
+
+
+Eureka Project->application.properties :
+spring.application.name=Eureka
+server.port=5555
+eureka.client.fetch-registry=false
+eureka.client.register-with-eureka=false
+eureka.client.service-url.defaultZone=http://localhost:5555/eureka
+
+
+Eureka Project->Application class :
+@EnableEurekaServer    (At Class level)
+
+
+Each Microservices->Application class :
+@EnableDiscoveryClient    (At Class level)
+
+
+Add this into Application class/or create a configuration class with @Configuration annotation (where you want to use methods of other microservice) to use Ribbon with Eureka:
+@Bean   
+@LoadBalanced
+RestTemplate restTemplate()
+{	return new RestTemplate();
+}
+
+
+Use this where you want to use methods of other microservice :
+//@Autowired 
+//DiscoveryClient client 
+
+//List<ServiceInstance> instances=client.getInstances("name_of_MS_to_be_used");
+//ServiceInstance instance=instances.get(0);
+//URI uri_name = instance.getUri();
+//Return type name = new RestTemplate().getForObject(uri_name+"/path/"+variable,ReturnType.class)
+
+
+@Autowired
+RestTemplate template
+
+Return type name = template.getForObject("http://MS_name (MS you want to use methods of)"+"/path/"+variable,ReturnType.class)
+
+
+MS of which you have created instances of/MS you want to use methods of->bootstrap.properties/bootstrap.yml :
+eureka.instance.instance-id=${spring.cloud.client.hostname}:${spring.application.name}:${spring.application..instance_id:${random.value}}
+
+
+Hystrix
+Application class of MS where you want to use methods of other microservice :
+@EnableCircuitBreaker     (At Class level)
+
+
+Add below annotation at method level where method of other MS is being called :
+@HystrixCommand(fallbackMethod="getMethodFallback") or
+@HystrixCommand(fallbackMethod="getMethodFallback" , ignoreExceptions= Exceptions_to_be_ignored.class)
+Return type name = template.getForObject("http://MS_name (MS you want to use methods of)"+"/path/"+variable,ReturnType.class)  //method of other MS
+
+
+Create below fallback method in the same class :
+public return_type of method (where you have put @HystrixCommand annotation) getMethodFallback(parameter of same method) {
+	return;
+}
+
+
+Microservice->bootstrap.properties/bootstrap.yml :
+hystrix.command.default.circuitBreaker.requestVolumeThreshold=10
+hystrix.command.default.metrics.rollingStats.timeInMilliseconds=10000
+hystrix.command.default.circuitBreaker.errorThresholdPercentage=50
+hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds=10000
+
+
+Zuul Project->application.properties :
+spring.application.name=ZuulServer
+server.port=8001
+zuul.routes.customer_create.path=/customers
+zuul.routes.customer_create.service-id=CustomerMS
+zuul.routes.customer_login.path=/customers/*/login/*
+zuul.routes.customer_login.strip-prefix=false
+zuul.routes.customer_login.service-id=CustomerMS
+zuul.routes.customer_profile.path=/customers/*
+zuul.routes.customer_profile.strip-prefix=false
+zuul.routes.customer_profile.service-id=CustomerMS
+zuul.routes.friends_customer.path=/customers/*/friends
+zuul.routes.friends_customer.strip-prefix=false
+zuul.routes.friends_customer.service-id=FriendMS
+zuul.routes.calldetails_customer.path=/customers/*/calldetails
+zuul.routes.calldetails_customer.service-id=CallDetailsMS
+zuul.routes.plan.path=/plan/**
+zuul.routes.plan.service-id=PlanMS
+zuul.ignored-patterns.customer=/customerms/**
+zuul.ignored-patterns.plans=/planms/**
+eureka.client.service-url.defaultZone=http://localhost:5555/eureka
+
+
+Zuul project->Application class :
+@EnableZuulProxy        (At Class level)
+@EnableDiscoveryClient     (At Class level)
+
+
+Create an interface in same MS where you wanna use method of other MS:
+@FeignClient("MS you want to use methods of")           (At Class level)
+public interface feign_name {
+	@RequestMapping(value="/method/{parameter}")
+	return_type (same as method you wanna use) methodName_of_MS_to_be_used(@PathVariable("parameter") int parameter_name);
+}
+
+
+Autowire feign in the controller class of same MS where you have declared feign interface
+@Autowired         (At Method level)
+feign_name variable;
+
+variable.methodName_of_MS_to_be_used(pass value);
+
+
+Zipkin project->Application class
+@EnableZipkinServer
+server.port=9411
+
+
+Each Microservices->application.properties  or  cloud config application.properties
+spring.zipkin.base-url=http://localhost:9411/
+
+
+OAUTH :
+Zuul project->Application Class :
+@EnableOAuth2Sso
+@EnableZuulProxy
+
+++ extra things 

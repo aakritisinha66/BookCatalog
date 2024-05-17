@@ -1,0 +1,23 @@
+.notification {
+    position: absolute;
+    background-color: rgb(62, 161, 106);
+    width: 200px;
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+.success {
+    margin-right: 10px;
+margin-bottom: -6px;
+}
+
+.top-section{
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+span {
+    left: 37px;
+position: relative;
+font-size: 14px;
+}

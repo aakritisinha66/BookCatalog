@@ -22,6 +22,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { favoriteReducer } from './store/reducer/favorite.reducer';
 import { FavoriteEffects } from './store/effects/favorite.efects';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { NotificationService } from './service/notification.service';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     CapitalizePipe,
     HighlightDirective,
     HeaderComponent,
-    WishlistComponent
+    WishlistComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [BookServiceService],
+  providers: [BookServiceService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,27 +24,28 @@ export class BookServiceService {
   }
 
   getAllBooks(): Observable<any> {
-    return this.http.get<any[]>('http://localhost:3000/books').pipe(
-      map((book: any) => {
-        return book
-      })
-      , catchError((error) => {
-        console.log("Error: ", error)
-        throw error
-      })
-    )
+    // return this.http.get<any[]>('http://localhost:8082/api/books').pipe(
+    //   map((book: any) => {
+    //     return book
+    //   })
+    //   , catchError((error) => {
+    //     console.log("Error: ", error)
+    //     throw error
+    //   })
+    // )
+    return this.http.get<any[]>('http://localhost:8082/api/books');
   }
 
   getBookById(id: any): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/books/${id}`)
+    return this.http.get<any>(`http://localhost:8082/api/books/${id}`)
   }
 
   addBook(book: any): Observable<any>{
-    return this.http.post<any>('http://localhost:3000/books', book)
+    return this.http.post<any>('http://localhost:8082/api/books', book)
   }
 
   updateBook(id: any, book: any): Observable<any>{
-    return this.http.put<any>(`http://localhost:3000/books/${id}`, book)
+    return this.http.put<any>(`http://localhost:8082/api/books/${id}`, book)
   }
 
   searchBook(query: string): Observable<any>{
